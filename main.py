@@ -27,11 +27,11 @@ def scroll_and_click(driver):
             )
             if button.is_displayed():
                 driver.execute_script("arguments[0].click();", button)
-                print("🔘 Clicked 'Load more results'")
+                print(" Clicked 'Load more results'")
                 time.sleep(scroll_pause_time)
         except:
             retry_count += 1
-            print("❌ No 'Load more results' button or already clicked.")
+            print(" No 'Load more results' button or already clicked.")
             if retry_count >= 3:
                 break
 
@@ -54,15 +54,15 @@ def web_scrapper(link, file_name):
     driver = webdriver.Chrome(options=options)
     driver.get(link)
 
-    print("🌀 Scrolling page and loading more hotels ...")
+    print(" Scrolling page and loading more hotels ...")
     scroll_and_click(driver)
 
-    print("✅ Finished scrolling. Parsing data ...")
+    print(" Finished scrolling. Parsing data ...")
     soup = BeautifulSoup(driver.page_source, "html.parser")
     driver.quit()
 
     hotel_divs = soup.find_all("div", {"data-testid": "property-card"})
-    print(f"🏨 Hotels found: {len(hotel_divs)}")
+    print(f" Hotels found: {len(hotel_divs)}")
 
     with open(
         f"D:\Projects_DS\Cv_Projects\project_2_webscraping(Booking)\{file_name}.csv",
@@ -110,7 +110,7 @@ def web_scrapper(link, file_name):
                 )
 
             except Exception as e:
-                print(f"⚠️ Error in hotel parsing: {e}")
+                print(f" Error in hotel parsing: {e}")
 
 
 if __name__ == "__main__":
