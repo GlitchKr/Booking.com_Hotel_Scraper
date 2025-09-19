@@ -48,7 +48,7 @@ def web_scrapper(link, file_name):
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument(
-        "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36"
+        ""
     )
 
     driver = webdriver.Chrome(options=options)
@@ -117,3 +117,4 @@ if __name__ == "__main__":
     url = input("Enter Booking URL: ").strip()
     fn = input("CSV file name: ").strip()
     web_scrapper(url, fn)
+
